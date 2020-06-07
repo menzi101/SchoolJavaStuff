@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>ENSCustomerProgram.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: monospace}
+pre {color: #000000; background-color: #ffffff; font-family: monospace}
+table {color: #000000; background-color: #e9e8e2; font-family: monospace}
+.ST0 {color: #969696; font-family: monospace; font-weight: bold}
+.ST1 {font-family: monospace; font-weight: bold}
+.ST7 {background-color: #dfdfdf; font-family: monospace; font-weight: bold}
+.comment {color: #969696}
+.ST3 {color: #009900}
+.guarded {background-color: #dfdfdf}
+.ST5 {color: #969696; background-color: #dfdfdf}
+.ST8 {color: #009900; background-color: #dfdfdf}
+.ST12 {font-family: monospace; font-weight: bold; font-style: italic}
+.ST2 {font-family: monospace; font-style: italic}
+.ST4 {color: #009900; font-family: monospace; font-style: italic}
+.ST9 {color: #009900; background-color: #dfdfdf; font-family: monospace; font-style: italic}
+.ST11 {background-color: #dfdfdf; font-family: monospace; font-style: italic}
+.literal {color: #0000e6}
+.ST6 {color: #0000e6; background-color: #dfdfdf}
+.string {color: #ce7b00}
+.ST10 {color: #ce7b00; background-color: #dfdfdf}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\Makro Centurion\OneDrive - Pearson Institute of Higher Education\ITJA211\Assignment\ITJA211_CGMSXBYZ5_2\src\itja211_cgmsxbyz5_2\ENSCustomerProgram.java</td></tr></table>
+<pre>
+<span class="comment">/*</span>
+<span class="comment"> * To change this license header, choose License Headers in Project Properties.</span>
+<span class="comment"> * To change this template file, choose Tools | Templates</span>
+<span class="comment"> * and open the template in the editor.</span>
+<span class="comment"> */</span>
+<span class="literal">package</span> itja211_cgmsxbyz5_2;
+
+<span class="literal">import</span> com.mysql.jdbc.Connection;
+<span class="literal">import</span> com.mysql.jdbc.PreparedStatement;
+<span class="literal">import</span> java.awt.Image;
+<span class="literal">import</span> java.awt.Toolkit;
+<span class="literal">import</span> java.sql.ResultSet;
+<span class="literal">import</span> java.sql.SQLException;
+<span class="literal">import</span> java.util.logging.Level;
+<span class="literal">import</span> java.util.logging.Logger;
+<span class="literal">import</span> javax.swing.ImageIcon;
+<span class="literal">import</span> javax.swing.JOptionPane;
+
+
+<span class="comment">/**</span>
+<span class="comment"> *</span>
+<span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">Makro</span> <span class="comment">Centurion</span>
+ <span class="comment">*/</span>
+<span class="literal">public</span> <span class="literal">class</span> <span class="ST1">ENSCustomerProgram</span> <span class="literal">extends</span> javax.swing.JFrame {
+
+    <span class="comment">/**</span>
+<span class="comment">     * </span><span class="comment">Creates</span> <span class="comment">new</span> <span class="comment">form</span> <span class="comment">ENSCustomerProgram</span>
+     <span class="comment">*/</span>
+    <span class="literal">public</span> <span class="ST1">ENSCustomerProgram</span>() {
+        initComponents();
+        setIconImage(Toolkit.<span class="ST2">getDefaultToolkit</span>().getImage(getClass().getResource(<span class="string">&quot;</span><span class="string">john.jpg</span><span class="string">&quot;</span>)));
+        
+        ImageIcon menzi = <span class="literal">new</span> ImageIcon(Toolkit.<span class="ST2">getDefaultToolkit</span>().getImage(getClass().getResource(<span class="string">&quot;</span><span class="string">john.jpg</span><span class="string">&quot;</span>)));
+        Image img1 = menzi.getImage();
+        Image img2 = img1.getScaledInstance(<span class="ST3">picLabel</span>.getWidth(), <span class="ST3">picLabel</span>.getHeight(), Image.<span class="ST4">SCALE_SMOOTH</span>);
+        ImageIcon i = <span class="literal">new</span> ImageIcon(img2);
+        
+        <span class="ST3">picLabel</span>.setIcon(i);
+        
+    }
+
+    <span class="comment">/**</span>
+<span class="comment">     * </span><span class="ST0">This</span> <span class="ST0">method</span> <span class="ST0">is</span> <span class="ST0">called</span> <span class="ST0">from</span> <span class="ST0">within</span> <span class="ST0">the</span> <span class="ST0">constructor</span> <span class="ST0">to</span> <span class="ST0">initialize</span> <span class="ST0">the</span> <span class="ST0">form</span><span class="ST0">.</span>
+<span class="comment">     * </span><span class="comment">WARNING</span><span class="comment">: </span><span class="comment">Do</span> <span class="comment">NOT</span> <span class="comment">modify</span> <span class="comment">this</span> <span class="comment">code</span><span class="comment">.</span> <span class="comment">The</span> <span class="comment">content</span> <span class="comment">of</span> <span class="comment">this</span> <span class="comment">method</span> <span class="comment">is</span> <span class="comment">always</span>
+<span class="comment">     * </span><span class="comment">regenerated</span> <span class="comment">by</span> <span class="comment">the</span> <span class="comment">Form</span> <span class="comment">Editor</span><span class="comment">.</span>
+     <span class="comment">*/</span>
+    @SuppressWarnings(<span class="string">&quot;</span><span class="string">unchecked</span><span class="string">&quot;</span>)
+    <span class="ST5">// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;                          </span>
+    <span class="ST6">private</span> <span class="ST6">void</span> <span class="ST7">initComponents</span><span class="guarded">(</span><span class="guarded">)</span> <span class="guarded">{</span>
+
+        <span class="ST8">whitePanel</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JPanel</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">picturePanel</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JPanel</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">picLabel</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JLabel</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">customerName</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JLabel</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">custNameField</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JTextField</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">customerSurname</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JLabel</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">custSurnameField</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JTextField</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">custTelNum</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JLabel</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">custTelNumField</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JTextField</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">custAddress</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JLabel</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">custAddressField</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JTextField</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">searchForRecords</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JButton</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">updateRecords</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JButton</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">addRecord</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JButton</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">bluePanel</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JPanel</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="guarded">setDefaultCloseOperation</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">WindowConstants</span><span class="guarded">.</span><span class="ST9">EXIT_ON_CLOSE</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="guarded">setTitle</span><span class="guarded">(</span><span class="ST10">&quot;</span><span class="ST10">ENS Customer Program</span><span class="ST10">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="guarded">setLocationByPlatform</span><span class="guarded">(</span><span class="ST6">t</span><span class="ST6">rue</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="guarded">getContentPane</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">.</span><span class="guarded">setLayout</span><span class="guarded">(</span><span class="ST6">new</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">GridLayout</span><span class="guarded">(</span><span class="guarded">0</span><span class="guarded">,</span> <span class="guarded">2</span><span class="guarded">)</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">whitePanel</span><span class="guarded">.</span><span class="guarded">setBackground</span><span class="guarded">(</span><span class="ST6">new</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">Color</span><span class="guarded">(</span><span class="guarded">255</span><span class="guarded">,</span> <span class="guarded">255</span><span class="guarded">,</span> <span class="guarded">255</span><span class="guarded">)</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">picturePanel</span><span class="guarded">.</span><span class="guarded">setToolTipText</span><span class="guarded">(</span><span class="ST10">&quot;</span><span class="ST10">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">picturePanel</span><span class="guarded">.</span><span class="guarded">setVerifyInputWhenFocusTarget</span><span class="guarded">(</span><span class="ST6">f</span><span class="ST6">alse</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span> <span class="guarded">picturePanelLayout</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">(</span><span class="ST8">picturePanel</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">picturePanel</span><span class="guarded">.</span><span class="guarded">setLayout</span><span class="guarded">(</span><span class="guarded">picturePanelLayout</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="guarded">picturePanelLayout</span><span class="guarded">.</span><span class="guarded">setHorizontalGroup</span><span class="guarded">(</span>
+            <span class="guarded">picturePanelLayout</span><span class="guarded">.</span><span class="guarded">createParallelGroup</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST11">Alignment</span><span class="guarded">.</span><span class="ST9">LEADING</span><span class="guarded">)</span>
+            <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">picLabel</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span>
+        <span class="guarded">)</span><span class="guarded">;</span>
+        <span class="guarded">picturePanelLayout</span><span class="guarded">.</span><span class="guarded">setVerticalGroup</span><span class="guarded">(</span>
+            <span class="guarded">picturePanelLayout</span><span class="guarded">.</span><span class="guarded">createParallelGroup</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST11">Alignment</span><span class="guarded">.</span><span class="ST9">LEADING</span><span class="guarded">)</span>
+            <span class="guarded">.</span><span class="guarded">addGroup</span><span class="guarded">(</span><span class="guarded">picturePanelLayout</span><span class="guarded">.</span><span class="guarded">createSequentialGroup</span><span class="guarded">(</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">picLabel</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">,</span> <span class="guarded">8</span><span class="guarded">2</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addGap</span><span class="guarded">(</span><span class="guarded">0</span><span class="guarded">,</span> <span class="guarded">0</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span><span class="guarded">)</span>
+        <span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">customerName</span><span class="guarded">.</span><span class="guarded">setText</span><span class="guarded">(</span><span class="ST10">&quot;</span><span class="ST10">Customer Name:</span><span class="ST10">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">custNameField</span><span class="guarded">.</span><span class="guarded">addActionListener</span><span class="guarded">(</span><span class="ST6">new</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionListener</span><span class="guarded">(</span><span class="guarded">)</span> <span class="guarded">{</span>
+            <span class="ST6">public</span> <span class="ST6">void</span> <span class="ST7">actionPerformed</span><span class="guarded">(</span><span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionEvent</span> <span class="guarded">evt</span><span class="guarded">)</span> <span class="guarded">{</span>
+                <span class="guarded">custNameFieldActionPerformed</span><span class="guarded">(</span><span class="guarded">evt</span><span class="guarded">)</span><span class="guarded">;</span>
+            <span class="guarded">}</span>
+        <span class="guarded">}</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">customerSurname</span><span class="guarded">.</span><span class="guarded">setText</span><span class="guarded">(</span><span class="ST10">&quot;</span><span class="ST10">Customer Surname:</span><span class="ST10">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">custTelNum</span><span class="guarded">.</span><span class="guarded">setText</span><span class="guarded">(</span><span class="ST10">&quot;</span><span class="ST10">Customer telephone number:</span><span class="ST10">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">custTelNumField</span><span class="guarded">.</span><span class="guarded">addActionListener</span><span class="guarded">(</span><span class="ST6">new</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionListener</span><span class="guarded">(</span><span class="guarded">)</span> <span class="guarded">{</span>
+            <span class="ST6">public</span> <span class="ST6">void</span> <span class="ST7">actionPerformed</span><span class="guarded">(</span><span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionEvent</span> <span class="guarded">evt</span><span class="guarded">)</span> <span class="guarded">{</span>
+                <span class="guarded">custTelNumFieldActionPerformed</span><span class="guarded">(</span><span class="guarded">evt</span><span class="guarded">)</span><span class="guarded">;</span>
+            <span class="guarded">}</span>
+        <span class="guarded">}</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">custAddress</span><span class="guarded">.</span><span class="guarded">setText</span><span class="guarded">(</span><span class="ST10">&quot;</span><span class="ST10">Customer Address:</span><span class="ST10">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">searchForRecords</span><span class="guarded">.</span><span class="guarded">setText</span><span class="guarded">(</span><span class="ST10">&quot;</span><span class="ST10">Search for Record</span><span class="ST10">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">searchForRecords</span><span class="guarded">.</span><span class="guarded">addActionListener</span><span class="guarded">(</span><span class="ST6">new</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionListener</span><span class="guarded">(</span><span class="guarded">)</span> <span class="guarded">{</span>
+            <span class="ST6">public</span> <span class="ST6">void</span> <span class="ST7">actionPerformed</span><span class="guarded">(</span><span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionEvent</span> <span class="guarded">evt</span><span class="guarded">)</span> <span class="guarded">{</span>
+                <span class="guarded">searchForRecordsActionPerformed</span><span class="guarded">(</span><span class="guarded">evt</span><span class="guarded">)</span><span class="guarded">;</span>
+            <span class="guarded">}</span>
+        <span class="guarded">}</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">updateRecords</span><span class="guarded">.</span><span class="guarded">setText</span><span class="guarded">(</span><span class="ST10">&quot;</span><span class="ST10">Update the records</span><span class="ST10">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">updateRecords</span><span class="guarded">.</span><span class="guarded">setActionCommand</span><span class="guarded">(</span><span class="ST10">&quot;</span><span class="ST10">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">updateRecords</span><span class="guarded">.</span><span class="guarded">addActionListener</span><span class="guarded">(</span><span class="ST6">new</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionListener</span><span class="guarded">(</span><span class="guarded">)</span> <span class="guarded">{</span>
+            <span class="ST6">public</span> <span class="ST6">void</span> <span class="ST7">actionPerformed</span><span class="guarded">(</span><span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionEvent</span> <span class="guarded">evt</span><span class="guarded">)</span> <span class="guarded">{</span>
+                <span class="guarded">updateRecordsActionPerformed</span><span class="guarded">(</span><span class="guarded">evt</span><span class="guarded">)</span><span class="guarded">;</span>
+            <span class="guarded">}</span>
+        <span class="guarded">}</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">addRecord</span><span class="guarded">.</span><span class="guarded">setText</span><span class="guarded">(</span><span class="ST10">&quot;</span><span class="ST10">Add Record</span><span class="ST10">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">addRecord</span><span class="guarded">.</span><span class="guarded">addActionListener</span><span class="guarded">(</span><span class="ST6">new</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionListener</span><span class="guarded">(</span><span class="guarded">)</span> <span class="guarded">{</span>
+            <span class="ST6">public</span> <span class="ST6">void</span> <span class="ST7">actionPerformed</span><span class="guarded">(</span><span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionEvent</span> <span class="guarded">evt</span><span class="guarded">)</span> <span class="guarded">{</span>
+                <span class="guarded">addRecordActionPerformed</span><span class="guarded">(</span><span class="guarded">evt</span><span class="guarded">)</span><span class="guarded">;</span>
+            <span class="guarded">}</span>
+        <span class="guarded">}</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span> <span class="guarded">whitePanelLayout</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">(</span><span class="ST8">whitePanel</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">whitePanel</span><span class="guarded">.</span><span class="guarded">setLayout</span><span class="guarded">(</span><span class="guarded">whitePanelLayout</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">setHorizontalGroup</span><span class="guarded">(</span>
+            <span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">createParallelGroup</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST11">Alignment</span><span class="guarded">.</span><span class="ST9">LEADING</span><span class="guarded">)</span>
+            <span class="guarded">.</span><span class="guarded">addGroup</span><span class="guarded">(</span><span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">createSequentialGroup</span><span class="guarded">(</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addContainerGap</span><span class="guarded">(</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addGroup</span><span class="guarded">(</span><span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">createParallelGroup</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST11">Alignment</span><span class="guarded">.</span><span class="ST9">LEADING</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custAddress</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">customerName</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custNameField</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">customerSurname</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custSurnameField</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custTelNum</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custTelNumField</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custAddressField</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addGroup</span><span class="guarded">(</span><span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">createSequentialGroup</span><span class="guarded">(</span><span class="guarded">)</span>
+                        <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">addRecord</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">,</span> <span class="guarded">1</span><span class="guarded">20</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">)</span>
+                        <span class="guarded">.</span><span class="guarded">addPreferredGap</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">LayoutStyle</span><span class="guarded">.</span><span class="ST11">ComponentPlacement</span><span class="guarded">.</span><span class="ST9">RELATED</span><span class="guarded">)</span>
+                        <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">searchForRecords</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">1</span><span class="guarded">43</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span><span class="guarded">)</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addContainerGap</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">)</span>
+            <span class="guarded">.</span><span class="guarded">addGroup</span><span class="guarded">(</span><span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">createSequentialGroup</span><span class="guarded">(</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addGap</span><span class="guarded">(</span><span class="guarded">7</span><span class="guarded">3</span><span class="guarded">,</span> <span class="guarded">7</span><span class="guarded">3</span><span class="guarded">,</span> <span class="guarded">7</span><span class="guarded">3</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addGroup</span><span class="guarded">(</span><span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">createParallelGroup</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST11">Alignment</span><span class="guarded">.</span><span class="ST9">LEADING</span><span class="guarded">,</span> <span class="ST6">f</span><span class="ST6">alse</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">updateRecords</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">picturePanel</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addContainerGap</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span><span class="guarded">)</span>
+        <span class="guarded">)</span><span class="guarded">;</span>
+        <span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">setVerticalGroup</span><span class="guarded">(</span>
+            <span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">createParallelGroup</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST11">Alignment</span><span class="guarded">.</span><span class="ST9">LEADING</span><span class="guarded">)</span>
+            <span class="guarded">.</span><span class="guarded">addGroup</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST11">Alignment</span><span class="guarded">.</span><span class="ST9">TRAILING</span><span class="guarded">,</span> <span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">createSequentialGroup</span><span class="guarded">(</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addContainerGap</span><span class="guarded">(</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">customerName</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addPreferredGap</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">LayoutStyle</span><span class="guarded">.</span><span class="ST11">ComponentPlacement</span><span class="guarded">.</span><span class="ST9">RELATED</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custNameField</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addPreferredGap</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">LayoutStyle</span><span class="guarded">.</span><span class="ST11">ComponentPlacement</span><span class="guarded">.</span><span class="ST9">RELATED</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">customerSurname</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addPreferredGap</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">LayoutStyle</span><span class="guarded">.</span><span class="ST11">ComponentPlacement</span><span class="guarded">.</span><span class="ST9">RELATED</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custSurnameField</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addPreferredGap</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">LayoutStyle</span><span class="guarded">.</span><span class="ST11">ComponentPlacement</span><span class="guarded">.</span><span class="ST9">RELATED</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custTelNum</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addPreferredGap</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">LayoutStyle</span><span class="guarded">.</span><span class="ST11">ComponentPlacement</span><span class="guarded">.</span><span class="ST9">RELATED</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custTelNumField</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addPreferredGap</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">LayoutStyle</span><span class="guarded">.</span><span class="ST11">ComponentPlacement</span><span class="guarded">.</span><span class="ST9">RELATED</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custAddress</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addPreferredGap</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">LayoutStyle</span><span class="guarded">.</span><span class="ST11">ComponentPlacement</span><span class="guarded">.</span><span class="ST9">RELATED</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">custAddressField</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addGap</span><span class="guarded">(</span><span class="guarded">1</span><span class="guarded">8</span><span class="guarded">,</span> <span class="guarded">1</span><span class="guarded">8</span><span class="guarded">,</span> <span class="guarded">1</span><span class="guarded">8</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addGroup</span><span class="guarded">(</span><span class="guarded">whitePanelLayout</span><span class="guarded">.</span><span class="guarded">createParallelGroup</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST11">Alignment</span><span class="guarded">.</span><span class="ST9">BASELINE</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">searchForRecords</span><span class="guarded">)</span>
+                    <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">addRecord</span><span class="guarded">)</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addGap</span><span class="guarded">(</span><span class="guarded">1</span><span class="guarded">8</span><span class="guarded">,</span> <span class="guarded">1</span><span class="guarded">8</span><span class="guarded">,</span> <span class="guarded">1</span><span class="guarded">8</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">updateRecords</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addGap</span><span class="guarded">(</span><span class="guarded">1</span><span class="guarded">8</span><span class="guarded">,</span> <span class="guarded">1</span><span class="guarded">8</span><span class="guarded">,</span> <span class="guarded">1</span><span class="guarded">8</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addComponent</span><span class="guarded">(</span><span class="ST8">picturePanel</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">DEFAULT_SIZE</span><span class="guarded">,</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST9">PREFERRED_SIZE</span><span class="guarded">)</span>
+                <span class="guarded">.</span><span class="guarded">addContainerGap</span><span class="guarded">(</span><span class="guarded">6</span><span class="guarded">3</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span><span class="guarded">)</span>
+        <span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="guarded">getContentPane</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">.</span><span class="guarded">add</span><span class="guarded">(</span><span class="ST8">whitePanel</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="ST8">bluePanel</span><span class="guarded">.</span><span class="guarded">setBackground</span><span class="guarded">(</span><span class="ST6">new</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">Color</span><span class="guarded">(</span><span class="guarded">0</span><span class="guarded">,</span> <span class="guarded">0</span><span class="guarded">,</span> <span class="guarded">255</span><span class="guarded">)</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span> <span class="guarded">bluePanelLayout</span> <span class="guarded">=</span> <span class="ST6">new</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">(</span><span class="ST8">bluePanel</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="ST8">bluePanel</span><span class="guarded">.</span><span class="guarded">setLayout</span><span class="guarded">(</span><span class="guarded">bluePanelLayout</span><span class="guarded">)</span><span class="guarded">;</span>
+        <span class="guarded">bluePanelLayout</span><span class="guarded">.</span><span class="guarded">setHorizontalGroup</span><span class="guarded">(</span>
+            <span class="guarded">bluePanelLayout</span><span class="guarded">.</span><span class="guarded">createParallelGroup</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST11">Alignment</span><span class="guarded">.</span><span class="ST9">LEADING</span><span class="guarded">)</span>
+            <span class="guarded">.</span><span class="guarded">addGap</span><span class="guarded">(</span><span class="guarded">0</span><span class="guarded">,</span> <span class="guarded">2</span><span class="guarded">89</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span>
+        <span class="guarded">)</span><span class="guarded">;</span>
+        <span class="guarded">bluePanelLayout</span><span class="guarded">.</span><span class="guarded">setVerticalGroup</span><span class="guarded">(</span>
+            <span class="guarded">bluePanelLayout</span><span class="guarded">.</span><span class="guarded">createParallelGroup</span><span class="guarded">(</span><span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">GroupLayout</span><span class="guarded">.</span><span class="ST11">Alignment</span><span class="guarded">.</span><span class="ST9">LEADING</span><span class="guarded">)</span>
+            <span class="guarded">.</span><span class="guarded">addGap</span><span class="guarded">(</span><span class="guarded">0</span><span class="guarded">,</span> <span class="guarded">4</span><span class="guarded">34</span><span class="guarded">,</span> <span class="guarded">Short</span><span class="guarded">.</span><span class="ST9">MAX_VALUE</span><span class="guarded">)</span>
+        <span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="guarded">getContentPane</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">.</span><span class="guarded">add</span><span class="guarded">(</span><span class="ST8">bluePanel</span><span class="guarded">)</span><span class="guarded">;</span>
+
+        <span class="guarded">pack</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+    <span class="guarded">}</span><span class="ST5">// &lt;/editor-fold&gt;                        </span>
+
+    <span class="ST6">private</span> <span class="ST6">void</span> <span class="ST7">custNameFieldActionPerformed</span><span class="guarded">(</span><span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionEvent</span> <span class="guarded">evt</span><span class="guarded">)</span> <span class="guarded">{</span>                                              
+        <span class="comment">// TODO add your handling code here:</span>
+    <span class="guarded">}</span>                                             
+
+    <span class="ST6">private</span> <span class="ST6">void</span> <span class="ST7">custTelNumFieldActionPerformed</span><span class="guarded">(</span><span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionEvent</span> <span class="guarded">evt</span><span class="guarded">)</span> <span class="guarded">{</span>                                                
+        <span class="comment">// TODO add your handling code here:</span>
+    <span class="guarded">}</span>                                               
+
+    <span class="ST6">private</span> <span class="ST6">void</span> <span class="ST7">updateRecordsActionPerformed</span><span class="guarded">(</span><span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionEvent</span> <span class="guarded">evt</span><span class="guarded">)</span> <span class="guarded">{</span>                                              
+        PreparedStatement ps;
+
+        SQLStuff db = <span class="literal">new</span> SQLStuff();
+        Connection con;
+        
+        <span class="literal">try</span> {
+            
+            con = (Connection) db.<span class="ST2">getConnection</span>();
+            
+            String query = <span class="string">&quot;</span><span class="string">UPDATE customer SET custSurname = ?, custNum = ?, custAddress = ? WHERE custName = ?</span><span class="string">&quot;</span>;
+            <span class="comment">// Query for database</span>
+            ps = (PreparedStatement) con.prepareStatement(query);
+            <span class="comment">// Prepared statements</span>
+            String name = <span class="ST3">custNameField</span>.getText();
+            String surname = <span class="ST3">custSurnameField</span>.getText();
+            String telNum = <span class="ST3">custTelNumField</span>.getText();
+            String address = <span class="ST3">custAddressField</span>.getText();
+        
+            ps.setString(1, surname);
+            ps.setString(2, telNum);
+            ps.setString(3, address);
+            ps.setString(4, name);
+            
+            
+            <span class="literal">int</span> num = ps.executeUpdate();
+            <span class="literal">if</span>(num &gt;0 )
+            JOptionPane.<span class="ST2">showMessageDialog</span>(<span class="literal">n</span><span class="literal">ull</span>,<span class="string">&quot;</span><span class="string">The Record was successfully updated.</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Record Successfully Updated</span><span class="string">&quot;</span>, 2);
+             <span class="comment">//If successfull</span>
+            con.close();
+            
+            
+        } <span class="literal">catch</span> (SQLException sqle) {
+            System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="string">Error </span><span class="string">&quot;</span> + sqle);
+            
+        } <span class="literal">catch</span> (ClassNotFoundException cnfe){
+            System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="string">Error </span><span class="string">&quot;</span> + cnfe);
+        } <span class="literal">catch</span> (Exception ex) {
+            Logger.<span class="ST2">getLogger</span>(ENSCustomerProgram.<span class="literal">class</span>.getName()).log(Level.<span class="ST4">SEVERE</span>, <span class="literal">n</span><span class="literal">ull</span>, ex);
+        }
+        
+    <span class="guarded">}</span>                                             
+
+    <span class="ST6">private</span> <span class="ST6">void</span> <span class="ST7">addRecordActionPerformed</span><span class="guarded">(</span><span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionEvent</span> <span class="guarded">evt</span><span class="guarded">)</span> <span class="guarded">{</span>                                          
+        PreparedStatement ps;
+
+        SQLStuff db = <span class="literal">new</span> SQLStuff();
+        Connection con;
+        
+        <span class="literal">try</span> {
+            
+            con = (Connection) db.<span class="ST2">getConnection</span>();
+            
+            String query = <span class="string">&quot;</span><span class="string">INSERT INTO customer (custName, custSurname, custNum, custAddress)</span><span class="string">&quot;</span> + <span class="string">&quot;</span><span class="string"> VALUES (?, ?, ?, ?)</span><span class="string">&quot;</span>;
+       
+            ps = (PreparedStatement) con.prepareStatement(query);
+            
+            String name = <span class="ST3">custNameField</span>.getText();
+            String surname = <span class="ST3">custSurnameField</span>.getText();
+            String telNum = <span class="ST3">custTelNumField</span>.getText();
+            String address = <span class="ST3">custAddressField</span>.getText();
+        
+            
+            ps.setString(1, name);
+            ps.setString(2, surname);
+            ps.setString(3, telNum);
+            ps.setString(4, address);
+            
+            ps.execute();
+            JOptionPane.<span class="ST2">showMessageDialog</span>(<span class="literal">n</span><span class="literal">ull</span>,<span class="string">&quot;</span><span class="string">The Record was successfully inserted.</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Record Successfully Inserted</span><span class="string">&quot;</span>, 2);
+            
+            con.close();
+            
+        } <span class="literal">catch</span> (SQLException sqle) {
+            System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="string">Error </span><span class="string">&quot;</span> + sqle);
+            
+        } <span class="literal">catch</span> (ClassNotFoundException cnfe){
+            System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="string">Error </span><span class="string">&quot;</span> + cnfe);
+        } <span class="literal">catch</span> (Exception ex) {
+            Logger.<span class="ST2">getLogger</span>(ENSCustomerProgram.<span class="literal">class</span>.getName()).log(Level.<span class="ST4">SEVERE</span>, <span class="literal">n</span><span class="literal">ull</span>, ex);
+        }
+        
+    <span class="guarded">}</span>                                         
+
+    <span class="ST6">private</span> <span class="ST6">void</span> <span class="ST7">searchForRecordsActionPerformed</span><span class="guarded">(</span><span class="guarded">java</span><span class="guarded">.</span><span class="guarded">awt</span><span class="guarded">.</span><span class="guarded">event</span><span class="guarded">.</span><span class="guarded">ActionEvent</span> <span class="guarded">evt</span><span class="guarded">)</span> <span class="guarded">{</span>                                                 
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        SQLStuff db = <span class="literal">new</span> SQLStuff();
+        Connection con;
+        
+        <span class="literal">try</span> {
+            
+            con = (Connection) db.<span class="ST2">getConnection</span>();
+            
+            String query = <span class="string">&quot;</span><span class="string">SELECT * FROM customer WHERE custName=? AND custSurname=?</span><span class="string">&quot;</span>;
+            ps = (PreparedStatement) con.prepareStatement(query);
+            
+            String name = <span class="ST3">custNameField</span>.getText();
+            String surname = <span class="ST3">custSurnameField</span>.getText();
+
+            ps.setString(1, name);
+            ps.setString(2, surname);
+           
+            ps.execute();
+            
+            rs = ps.executeQuery();
+        
+            <span class="literal">if</span> (rs.next()) {
+         
+            <span class="ST3">custTelNumField</span>.setText(rs.getString(<span class="string">&quot;</span><span class="string">custNum</span><span class="string">&quot;</span>));
+            <span class="ST3">custAddressField</span>.setText(rs.getString(<span class="string">&quot;</span><span class="string">custAddress</span><span class="string">&quot;</span>));  
+            
+            JOptionPane.<span class="ST2">showMessageDialog</span>(<span class="literal">n</span><span class="literal">ull</span>,<span class="string">&quot;</span><span class="string">Update the required records and click on the update records button if necessary.</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Search for Record</span><span class="string">&quot;</span>, 2);
+            
+            }<span class="literal">else</span>{
+                JOptionPane.<span class="ST2">showMessageDialog</span>(<span class="literal">n</span><span class="literal">ull</span>,<span class="string">&quot;</span><span class="string">Something went wrong</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Error of sorts</span><span class="string">&quot;</span>, JOptionPane.<span class="ST4">ERROR_MESSAGE</span>);
+            }
+            con.close();
+        } <span class="literal">catch</span> (SQLException sqle) {
+            System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="string">Error </span><span class="string">&quot;</span> + sqle);
+            
+        } <span class="literal">catch</span> (ClassNotFoundException cnfe){
+            System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="string">Error </span><span class="string">&quot;</span> + cnfe);
+        } <span class="literal">catch</span> (Exception ex) {
+            Logger.<span class="ST2">getLogger</span>(ENSCustomerProgram.<span class="literal">class</span>.getName()).log(Level.<span class="ST4">SEVERE</span>, <span class="literal">n</span><span class="literal">ull</span>, ex);
+        }
+    <span class="guarded">}</span>                                                
+
+    <span class="comment">/**</span>
+<span class="comment">     * </span><span class="ST0">@param</span> args <span class="comment">the</span> <span class="comment">command</span> <span class="comment">line</span> <span class="comment">arguments</span>
+     <span class="comment">*/</span>
+    <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST12">main</span>(String args[]) {
+        <span class="comment">/* Set the Nimbus look and feel */</span>
+        <span class="comment">//&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;</span>
+        <span class="comment">/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.</span>
+<span class="comment">         * For details see </span><span class="comment">http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html</span> 
+<span class="comment">         */</span>
+        <span class="literal">try</span> {
+            <span class="literal">for</span> (javax.swing.UIManager.<span class="ST2">LookAndFeelInfo</span> info : javax.swing.UIManager.<span class="ST2">getInstalledLookAndFeels</span>()) {
+                <span class="literal">if</span> (<span class="string">&quot;</span><span class="string">Nimbus</span><span class="string">&quot;</span>.equals(info.getName())) {
+                    javax.swing.UIManager.<span class="ST2">setLookAndFeel</span>(info.getClassName());
+                    <span class="literal">break</span>;
+                }
+            }
+        } <span class="literal">catch</span> (ClassNotFoundException ex) {
+            java.util.logging.Logger.<span class="ST2">getLogger</span>(ENSCustomerProgram.<span class="literal">class</span>.getName()).log(java.util.logging.Level.<span class="ST4">SEVERE</span>, <span class="literal">n</span><span class="literal">ull</span>, ex);
+        } <span class="literal">catch</span> (InstantiationException ex) {
+            java.util.logging.Logger.<span class="ST2">getLogger</span>(ENSCustomerProgram.<span class="literal">class</span>.getName()).log(java.util.logging.Level.<span class="ST4">SEVERE</span>, <span class="literal">n</span><span class="literal">ull</span>, ex);
+        } <span class="literal">catch</span> (IllegalAccessException ex) {
+            java.util.logging.Logger.<span class="ST2">getLogger</span>(ENSCustomerProgram.<span class="literal">class</span>.getName()).log(java.util.logging.Level.<span class="ST4">SEVERE</span>, <span class="literal">n</span><span class="literal">ull</span>, ex);
+        } <span class="literal">catch</span> (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.<span class="ST2">getLogger</span>(ENSCustomerProgram.<span class="literal">class</span>.getName()).log(java.util.logging.Level.<span class="ST4">SEVERE</span>, <span class="literal">n</span><span class="literal">ull</span>, ex);
+        }
+        <span class="comment">//&lt;/editor-fold&gt;</span>
+
+        <span class="comment">/* Create and display the form */</span>
+        java.awt.EventQueue.<span class="ST2">invokeLater</span>(<span class="literal">new</span> Runnable() {
+            <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">run</span>() {
+                <span class="literal">new</span> ENSCustomerProgram().setVisible(<span class="literal">t</span><span class="literal">rue</span>);
+            }
+        });
+    }
+
+    <span class="ST5">// Variables declaration - do not modify                     </span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JButton</span> <span class="ST8">addRecord</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JPanel</span> <span class="ST8">bluePanel</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JLabel</span> <span class="ST8">custAddress</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JTextField</span> <span class="ST8">custAddressField</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JTextField</span> <span class="ST8">custNameField</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JTextField</span> <span class="ST8">custSurnameField</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JLabel</span> <span class="ST8">custTelNum</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JTextField</span> <span class="ST8">custTelNumField</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JLabel</span> <span class="ST8">customerName</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JLabel</span> <span class="ST8">customerSurname</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JLabel</span> <span class="ST8">picLabel</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JPanel</span> <span class="ST8">picturePanel</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JButton</span> <span class="ST8">searchForRecords</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JButton</span> <span class="ST8">updateRecords</span><span class="guarded">;</span>
+    <span class="ST6">private</span> <span class="guarded">javax</span><span class="guarded">.</span><span class="guarded">swing</span><span class="guarded">.</span><span class="guarded">JPanel</span> <span class="ST8">whitePanel</span><span class="guarded">;</span>
+    <span class="ST5">// End of variables declaration                   </span>
+}
+
+</pre></body>
+</html>

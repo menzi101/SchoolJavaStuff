@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Question2.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: monospace}
+pre {color: #000000; background-color: #ffffff; font-family: monospace}
+table {color: #000000; background-color: #e9e8e2; font-family: monospace}
+.ST0 {font-family: monospace; font-weight: bold}
+.ST1 {color: #969696; font-family: monospace; font-weight: bold}
+.comment {color: #969696}
+.ST2 {font-family: monospace; font-weight: bold; font-style: italic}
+.ST3 {color: #009900; font-family: monospace; font-style: italic}
+.ST5 {font-family: monospace; font-style: italic}
+.literal {color: #0000e6}
+.ST4 {color: #ce7b00; font-family: monospace; font-weight: bold}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\Makro Centurion\OneDrive - Pearson Institute of Higher Education\ITJA211\Exercises\exceptions\Question2\src\question2\Question2.java</td></tr></table>
+<pre>
+ 1 
+ 2 <span class="literal">package</span> question2;
+ 3 
+ 4 <span class="comment">/**</span>
+ 5 <span class="comment"> * </span><span class="comment">Menzi</span> <span class="comment">Hlope</span>
+ 6 <span class="comment"> * </span><span class="comment">CGMSXBYZ5</span>
+ 7  <span class="comment">*/</span>
+ 8 <span class="literal">public</span> <span class="literal">class</span> <span class="ST0">Question2</span> {
+ 9 
+10  <span class="comment">/**</span>
+11 <span class="comment">     * </span><span class="ST1">Method</span> <span class="ST1">should</span> <span class="ST1">calculate</span> <span class="ST1">the</span> <span class="ST1">area</span> <span class="ST1">of</span> <span class="ST1">a</span> <span class="ST1">circle</span>
+12 <span class="comment">     *</span>
+13 <span class="comment">     * </span><span class="ST1">@param</span> radius
+14 <span class="comment">     * </span><span class="ST1">@return</span> <span class="comment">area</span> <span class="comment">of</span> <span class="comment">a</span> <span class="comment">circle</span>
+15      <span class="comment">*/</span>
+16     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">double</span> <span class="ST2">getArea</span>(<span class="literal">double</span> radius) {
+17         <span class="literal">return</span> Math.<span class="ST3">PI</span> * radius * radius;
+18     }
+19 
+20     <span class="comment">/**</span>
+21 <span class="comment">     * </span><span class="ST1">Method</span> <span class="ST1">should</span> <span class="ST1">calculate</span> <span class="ST1">the</span> <span class="ST1">area</span> <span class="ST1">of</span> <span class="ST1">a</span> <span class="ST1">rectangle</span>
+22 <span class="comment">     *</span>
+23 <span class="comment">     * </span><span class="ST1">@param</span> length
+24 <span class="comment">     * </span><span class="ST1">@param</span> width
+25 <span class="comment">     *</span>
+26 <span class="comment">     * </span><span class="ST1">@return</span> <span class="comment">area</span> <span class="comment">of</span> <span class="comment">a</span> <span class="comment">rectangle</span>
+27      <span class="comment">*/</span>
+28     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">double</span> <span class="ST2">getArea</span>(<span class="literal">int</span> length, <span class="literal">int</span> width) {
+29         <span class="literal">return</span> length * width;
+30     }
+31 
+32     <span class="comment">/**</span>
+33 <span class="comment">     * </span><span class="ST1">Method</span> <span class="ST1">should</span> <span class="ST1">calculate</span> <span class="ST1">the</span> <span class="ST1">area</span> <span class="ST1">of</span> <span class="ST1">a</span> <span class="ST1">cylinder</span>
+34 <span class="comment">     *</span>
+35 <span class="comment">     * </span><span class="ST1">@param</span> radius
+36 <span class="comment">     * </span><span class="ST1">@param</span> height
+37 <span class="comment">     *</span>
+38 <span class="comment">     * </span><span class="ST1">@return</span> <span class="comment">area</span> <span class="comment">of</span> <span class="comment">a</span> <span class="comment">cylinder</span>
+39      <span class="comment">*/</span>
+40     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">double</span> <span class="ST2">getArea</span>(<span class="literal">double</span> radius, <span class="literal">double</span> height) {
+41         <span class="literal">return</span> Math.<span class="ST3">PI</span> * radius * radius * height;
+42     }
+43     
+44     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">main</span>(String[] args) {
+45             <span class="comment">// Area of a circle</span>
+46     System.<span class="ST3">out</span>.printf(<span class="string">&quot;</span><span class="string">The area of a circle with a </span><span class="string">&quot;</span> + <span class="string">&quot;</span><span class="string">radius of 10.0 is %6.2f</span><span class="ST4">\n</span><span class="string">&quot;</span>, Question2.<span class="ST5">getArea</span>(10.0));
+47 
+48             <span class="comment">// Area of a rectangle</span>
+49     System.<span class="ST3">out</span>.printf(<span class="string">&quot;</span><span class="string">The area of a rectangle with a </span><span class="string">&quot;</span> + <span class="string">&quot;</span><span class="string">length of 15 and a width of 25 is %6.2f</span><span class="ST4">\n</span><span class="string">&quot;</span>, Question2.<span class="ST5">getArea</span>(15, 25));
+50 
+51             <span class="comment">// Area of cylinder</span>
+52     System.<span class="ST3">out</span>.printf(<span class="string">&quot;</span><span class="string">The area of a cylinder with a </span><span class="string">&quot;</span> + <span class="string">&quot;</span><span class="string">radius of 12.0 and a height </span><span class="string">&quot;</span> + <span class="string">&quot;</span><span class="string">of 17.0 is %6.2f</span><span class="ST4">\n</span><span class="string">&quot;</span>, Question2.<span class="ST5">getArea</span>(12.0, 17.0));
+53     }
+54     
+55 }
+56 
+</pre></body>
+</html>

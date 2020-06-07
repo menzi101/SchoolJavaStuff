@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Question9.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: monospace}
+pre {color: #000000; background-color: #ffffff; font-family: monospace}
+table {color: #000000; background-color: #e9e8e2; font-family: monospace}
+.ST0 {font-family: monospace; font-weight: bold}
+.comment {color: #969696}
+.ST2 {font-family: monospace; font-weight: bold; font-style: italic}
+.ST1 {color: #009900; font-family: monospace; font-style: italic}
+.ST3 {font-family: monospace; font-style: italic}
+.literal {color: #0000e6}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\Makro Centurion\OneDrive - Pearson Institute of Higher Education\ITJA211\Exercises\exceptions\Question9\src\question9\Question9.java</td></tr></table>
+<pre>
+  1 
+  2 <span class="literal">package</span> question9;
+  3 
+  4 <span class="literal">import</span> com.mysql.jdbc.Connection;
+  5 <span class="literal">import</span> com.mysql.jdbc.PreparedStatement;
+  6 <span class="literal">import</span> java.awt.Component;
+  7 <span class="literal">import</span> java.awt.ComponentOrientation;
+  8 <span class="literal">import</span> java.awt.Container;
+  9 <span class="literal">import</span> java.awt.GridLayout;
+ 10 <span class="literal">import</span> java.awt.event.ActionEvent;
+ 11 <span class="literal">import</span> java.awt.event.ActionListener;
+ 12 <span class="literal">import</span> java.sql.SQLException;
+ 13 <span class="literal">import</span> java.util.logging.Level;
+ 14 <span class="literal">import</span> java.util.logging.Logger;
+ 15 <span class="literal">import</span> javax.swing.JButton;
+ 16 <span class="literal">import</span> javax.swing.JComboBox;
+ 17 <span class="literal">import</span> javax.swing.JFrame;
+ 18 <span class="literal">import</span> javax.swing.JLabel;
+ 19 <span class="literal">import</span> javax.swing.JOptionPane;
+ 20 <span class="literal">import</span> javax.swing.JTextField;
+ 21 
+ 22 <span class="comment">/**</span>
+ 23 <span class="comment"> * </span><span class="comment">Menzi</span> <span class="comment">Hlope</span>
+ 24 <span class="comment"> * </span><span class="comment">CGMSXBYZ5</span>
+ 25  <span class="comment">*/</span>
+ 26 
+ 27 <span class="literal">public</span> <span class="literal">class</span> <span class="ST0">Question9</span> {
+ 28 
+ 29     <span class="literal">public</span> <span class="literal">final</span> <span class="literal">static</span> <span class="literal">boolean</span> <span class="ST1">RIGHT_TO_LEFT</span> = <span class="literal">false</span>;
+ 30 
+ 31     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">addComponentsToPane</span>(Container contentPane) {
+ 32         <span class="literal">if</span> (<span class="ST1">RIGHT_TO_LEFT</span>) {
+ 33             contentPane.setComponentOrientation(ComponentOrientation.<span class="ST1">RIGHT_TO_LEFT</span>);
+ 34         }
+ 35         String[] levels = { <span class="string">&quot;</span><span class="string">Certificate</span><span class="string">&quot;</span>,<span class="string">&quot;</span><span class="string">Level 1</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Level 2</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Level 3</span><span class="string">&quot;</span> };
+ 36 
+ 37 <span class="comment">//        Any number of rows and 2 columns</span>
+ 38         contentPane.setLayout(<span class="literal">new</span> GridLayout(0,2));
+ 39 
+ 40         contentPane.add(<span class="literal">new</span> JLabel(<span class="string">&quot;</span><span class="string">Number</span><span class="string">&quot;</span>));
+ 41         JTextField numberField = (JTextField) contentPane.add(<span class="literal">new</span> JTextField(<span class="string">&quot;&quot;</span>));
+ 42         
+ 43         contentPane.add(<span class="literal">new</span> JLabel(<span class="string">&quot;</span><span class="string">Name</span><span class="string">&quot;</span>));
+ 44         JTextField nameField = (JTextField) contentPane.add(<span class="literal">new</span> JTextField(<span class="string">&quot;&quot;</span>));
+ 45         
+ 46         contentPane.add(<span class="literal">new</span> JLabel(<span class="string">&quot;</span><span class="string">Surname</span><span class="string">&quot;</span>));
+ 47         JTextField surnameField = (JTextField) contentPane.add(<span class="literal">new</span> JTextField(<span class="string">&quot;&quot;</span>));
+ 48         
+ 49         contentPane.add(<span class="literal">new</span> JLabel(<span class="string">&quot;</span><span class="string">Level</span><span class="string">&quot;</span>));
+ 50         
+ 51         JComboBox stCombo = (JComboBox) contentPane.add(<span class="literal">new</span> JComboBox(levels));
+ 52         
+ 53        JButton button3 = (JButton) contentPane.add(<span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Insert</span><span class="string">&quot;</span>));
+ 54        button3.addActionListener((ActionEvent arg0) -&gt; {
+ 55            
+ 56            PreparedStatement ps;
+ 57 
+ 58         SQLast db = <span class="literal">new</span> SQLast();
+ 59         Connection con;
+ 60         
+ 61         <span class="literal">try</span> {
+ 62             
+ 63             con = (Connection) db.<span class="ST3">getConnection</span>();
+ 64             
+ 65             String query = <span class="string">&quot;</span><span class="string">INSERT INTO StudentDetails set stNumber = ?, stName = ?, stSurname = ?, stLevel=?</span><span class="string">&quot;</span>;
+ 66             <span class="comment">// Query for database</span>
+ 67             ps = (PreparedStatement) con.prepareStatement(query);
+ 68             <span class="comment">// Prepared statements</span>
+ 69             String number = numberField.getText();
+ 70             String name = surnameField.getText();
+ 71             String surname = surnameField.getText();
+ 72             String level = stCombo.getSelectedItem().toString();
+ 73            
+ 74             ps.setString(1, number);
+ 75             ps.setString(2, name);
+ 76             ps.setString(3, surname);
+ 77             ps.setString(4, level);
+ 78 
+ 79             <span class="literal">int</span> num = ps.executeUpdate();
+ 80             <span class="literal">if</span>(num &gt;0 )
+ 81             JOptionPane.<span class="ST3">showMessageDialog</span>(<span class="literal">n</span><span class="literal">ull</span>,<span class="string">&quot;</span><span class="string">The Record was successfully updated.</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Record Successfully Updated</span><span class="string">&quot;</span>, 2);
+ 82              <span class="comment">//If successfull</span>
+ 83             con.close();
+ 84             
+ 85             
+ 86         } <span class="literal">catch</span> (SQLException sqle) {
+ 87             System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Error </span><span class="string">&quot;</span> + sqle);
+ 88             
+ 89         } <span class="literal">catch</span> (ClassNotFoundException cnfe){
+ 90             System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Error </span><span class="string">&quot;</span> + cnfe);
+ 91         } <span class="literal">catch</span> (Exception ex) {
+ 92             Logger.<span class="ST3">getLogger</span>(Question9.<span class="literal">class</span>.getName()).log(Level.<span class="ST1">SEVERE</span>, <span class="literal">n</span><span class="literal">ull</span>, ex);
+ 93         }
+ 94  
+ 95         });
+ 96         
+ 97         contentPane.add(<span class="literal">new</span> JLabel(<span class="string">&quot;&quot;</span>));
+ 98     }
+ 99     
+100         <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">createAndShowGUI</span>() {
+101         JFrame.<span class="ST3">setDefaultLookAndFeelDecorated</span>(<span class="literal">f</span><span class="literal">alse</span>);
+102 
+103         JFrame frame = <span class="literal">new</span> JFrame(<span class="string">&quot;</span><span class="string">Library</span><span class="string">&quot;</span>);
+104         frame.setDefaultCloseOperation(JFrame.<span class="ST1">EXIT_ON_CLOSE</span>);
+105         
+106         <span class="comment">//Set up the content pane and components in GridLayout</span>
+107         <span class="ST3">addComponentsToPane</span>(frame.getContentPane());
+108 
+109         frame.pack();
+110         frame.setSize(400, 200);
+111         frame.setVisible(<span class="literal">t</span><span class="literal">rue</span>);
+112     }
+113     
+114     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">main</span>(String[] args) {
+115      javax.swing.SwingUtilities.<span class="ST3">invokeLater</span>(<span class="literal">new</span> Runnable() {
+116             @Override
+117             <span class="literal">public</span> <span class="literal">void</span> <span class="ST0">run</span>() {
+118             <span class="ST3">createAndShowGUI</span>();   <span class="comment">// TODO code application logic here</span>
+119     }
+120      });}
+121 }
+122              
+</pre></body>
+</html>

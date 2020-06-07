@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Question5.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: monospace}
+pre {color: #000000; background-color: #ffffff; font-family: monospace}
+table {color: #000000; background-color: #e9e8e2; font-family: monospace}
+.ST0 {font-family: monospace; font-weight: bold}
+.comment {color: #969696}
+.ST1 {font-family: monospace; font-weight: bold; font-style: italic}
+.ST2 {color: #009900; font-family: monospace; font-style: italic}
+.literal {color: #0000e6}
+.ST3 {color: #ce7b00; font-family: monospace; font-weight: bold}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\Makro Centurion\OneDrive - Pearson Institute of Higher Education\ITJA211\Exercises\exceptions\Question5\src\question5\Question5.java</td></tr></table>
+<pre>
+ 1 <span class="literal">package</span> question5;
+ 2 <span class="comment">/**</span>
+ 3 <span class="comment"> * </span><span class="comment">Menzi</span> <span class="comment">Hlope</span>
+ 4 <span class="comment"> * </span><span class="comment">CGMSXBYZ5</span>
+ 5  <span class="comment">*/</span>
+ 6 <span class="literal">public</span> <span class="literal">class</span> <span class="ST0">Question5</span> {
+ 7 
+ 8     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">main</span>(String[] args) {
+ 9         
+10     <span class="literal">int</span> rows = 5;
+11  
+12     <span class="literal">for</span> (<span class="literal">int</span> i= rows-1; i&gt;=0 ; i--)
+13     {
+14         <span class="literal">for</span> (<span class="literal">int</span> j=0; j&lt;=i; j++)
+15         {
+16             System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="string">*</span><span class="string">&quot;</span> + <span class="string">&quot;</span> <span class="string">&quot;</span>);<span class="comment">//Print out stars</span>
+17         }
+18     System.<span class="ST2">out</span>.println();<span class="comment">// ending line after each row</span>
+19     }
+20     
+21     <span class="literal">int</span> row = 7;
+22     <span class="literal">int</span> k, l;  
+23         <span class="literal">for</span>(k = 1; k &lt; row; k++) <span class="comment">//outer loop for number of rows(n) </span>
+24         {
+25             <span class="literal">for</span>(l=1; l &lt;= k; l++) <span class="comment">//  inner loop for columns</span>
+26             {       
+27                 <span class="literal">for</span> (l = 1; l &lt; k; ++l)
+28                 {
+29                     System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="string">* </span><span class="string">&quot;</span>); <span class="comment">//Print out stars</span>
+30                 }
+31             System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="ST3">\n</span><span class="string">&quot;</span>);<span class="comment">// ending line after each row</span>
+32             }           
+33         }
+34     }
+35     
+36 }
+37 
+</pre></body>
+</html>

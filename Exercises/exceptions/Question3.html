@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Question3.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: monospace}
+pre {color: #000000; background-color: #ffffff; font-family: monospace}
+table {color: #000000; background-color: #e9e8e2; font-family: monospace}
+.ST0 {font-family: monospace; font-weight: bold}
+.comment {color: #969696}
+.ST3 {font-family: monospace; font-weight: bold; font-style: italic}
+.ST1 {color: #009900; font-family: monospace; font-style: italic}
+.ST2 {font-family: monospace; font-style: italic}
+.literal {color: #0000e6}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\Makro Centurion\OneDrive - Pearson Institute of Higher Education\ITJA211\Exercises\exceptions\Question3\src\question3\Question3.java</td></tr></table>
+<pre>
+ 1 
+ 2 <span class="literal">package</span> question3;
+ 3 
+ 4 <span class="literal">import</span> java.awt.event.ActionEvent;
+ 5 <span class="literal">import</span> java.awt.event.ActionListener;
+ 6 <span class="literal">import</span> javax.swing.JButton;
+ 7 <span class="literal">import</span> javax.swing.JFrame;
+ 8 <span class="literal">import</span> javax.swing.JLabel;
+ 9 <span class="literal">import</span> javax.swing.JOptionPane;
+10 <span class="literal">import</span> javax.swing.JPanel;
+11 <span class="literal">import</span> javax.swing.JTextField;
+12 
+13 <span class="comment">/**</span>
+14 <span class="comment"> *  </span><span class="comment">Menzi</span> <span class="comment">Hlope</span>
+15 <span class="comment"> *  </span><span class="comment">CGMSXBYZ5</span>
+16  <span class="comment">*/</span>
+17 
+18 <span class="literal">class</span> <span class="ST0">MyForm</span> <span class="literal">extends</span> JFrame <span class="literal">implements</span> ActionListener{
+19 
+20     <span class="literal">static</span> JTextField <span class="ST1">t</span>; <span class="comment">//Textbox </span>
+21     <span class="literal">static</span> JFrame <span class="ST1">f</span>;  <span class="comment">// JFrame</span>
+22     <span class="literal">static</span> JButton <span class="ST1">b</span>; <span class="comment">//JButton</span>
+23     <span class="literal">static</span> JLabel <span class="ST1">l</span>; <span class="comment">//JLabel</span>
+24     
+25     <span class="ST0">MyForm</span>(){}
+26 
+27     @Override
+28     <span class="literal">public</span> <span class="literal">void</span> <span class="ST0">actionPerformed</span>(ActionEvent e) {
+29         String s = e.getActionCommand();
+30         
+31         
+32         <span class="literal">if</span> (s.equals(<span class="string">&quot;</span><span class="string">submit</span><span class="string">&quot;</span>)) {
+33             String enteredText = <span class="ST1">t</span>.getText();<span class="comment">//Saving to string for JOptionPane.</span>
+34             <span class="literal">if</span> (<span class="ST1">t</span>.getText().equals(<span class="string">&quot;</span> <span class="string">&quot;</span>)) {<span class="comment">// If user enters nothing at all.</span>
+35                 JOptionPane.<span class="ST2">showMessageDialog</span>(<span class="literal">n</span><span class="literal">ull</span>, <span class="string">&quot;</span><span class="string">You have entered null value. Please enter something.</span><span class="string">&quot;</span>);
+36             }<span class="literal">else</span> {
+37             <span class="ST1">l</span>.setText(<span class="ST1">t</span>.getText());<span class="comment">//Get the label to be equals the entered text.</span>
+38             <span class="ST1">t</span>.setText(<span class="string">&quot;</span> <span class="string">&quot;</span>);
+39             
+40             JOptionPane.<span class="ST2">showMessageDialog</span>(<span class="literal">n</span><span class="literal">ull</span>, enteredText);<span class="comment">// Value of Textbox displayed on JOptionPane.</span>
+41             }
+42         }
+43     }
+44     
+45      
+46 <span class="literal">public</span> <span class="literal">static</span> <span class="literal">class</span> <span class="ST3">Question3</span> {
+47     
+48     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST3">main</span>(String[] args) {
+49         <span class="ST1">f</span> = <span class="literal">new</span> JFrame(<span class="string">&quot;</span><span class="string">Textbox</span><span class="string">&quot;</span>); <span class="comment">// Frame to store text field and button </span>
+50         
+51         <span class="ST1">l</span> = <span class="literal">new</span> JLabel(<span class="string">&quot;</span><span class="string">Entered text will display here.</span><span class="string">&quot;</span>);
+52             
+53         <span class="ST1">b</span> = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">submit</span><span class="string">&quot;</span>);<span class="comment">// create a new button  </span>
+54   
+55         MyForm te = <span class="literal">new</span> MyForm(); <span class="comment">// create a object of the text class</span>
+56   
+57         <span class="ST1">b</span>.addActionListener(te);  <span class="comment">// addActionListener to button </span>
+58   
+59         <span class="ST1">t</span> = <span class="literal">new</span> JTextField(<span class="string">&quot;</span><span class="string">Please enter text here.</span><span class="string">&quot;</span>, 16); <span class="comment">// create a panel to add buttons and textfield </span>
+60       
+61         JPanel p = <span class="literal">new</span> JPanel(); <span class="comment">// create a panel to add buttons and textfield </span>
+62         
+63         <span class="comment">// add buttons and textfield to panel </span>
+64         p.add(<span class="ST1">t</span>); 
+65         p.add(<span class="ST1">b</span>); 
+66         p.add(<span class="ST1">l</span>); 
+67   
+68         <span class="comment">// add panel to frame </span>
+69         <span class="ST1">f</span>.add(p); 
+70   
+71         <span class="comment">// set the size of frame </span>
+72         <span class="ST1">f</span>.setSize(300, 300); 
+73   
+74         <span class="ST1">f</span>.setVisible(<span class="literal">t</span><span class="literal">rue</span>); 
+75       
+76     }
+77     
+78 }
+79 }
+</pre></body>
+</html>

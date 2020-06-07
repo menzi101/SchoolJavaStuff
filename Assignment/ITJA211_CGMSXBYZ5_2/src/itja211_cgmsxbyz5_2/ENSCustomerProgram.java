@@ -18,8 +18,8 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
- * @author Makro Centurion
+ *  Menzi Hlope
+ *  CGMSXBYZ5
  */
 public class ENSCustomerProgram extends javax.swing.JFrame {
 
@@ -225,23 +225,24 @@ public class ENSCustomerProgram extends javax.swing.JFrame {
             con = (Connection) db.getConnection();
             
             String query = "UPDATE customer SET custSurname = ?, custNum = ?, custAddress = ? WHERE custName = ?";
-       
+            // Query for database
             ps = (PreparedStatement) con.prepareStatement(query);
-            
+            // Prepared statements
             String name = custNameField.getText();
             String surname = custSurnameField.getText();
             String telNum = custTelNumField.getText();
             String address = custAddressField.getText();
         
-            ps.setString(1, name);
-            ps.setString(2, surname);
-            ps.setString(3, telNum);
-            ps.setString(4, address);
+            ps.setString(1, surname);
+            ps.setString(2, telNum);
+            ps.setString(3, address);
+            ps.setString(4, name);
             
             
-            ps.execute();
+            int num = ps.executeUpdate();
+            if(num >0 )
             JOptionPane.showMessageDialog(null,"The Record was successfully updated.", "Record Successfully Updated", 2);
-             
+             //If successfull
             con.close();
             
             
